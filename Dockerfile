@@ -16,3 +16,6 @@ RUN apt-get update && \
     pip install git+https://github.com/juanmcasillas/gopro2gpx && \
     pip install yq && \
     pip install git+https://github.com/Seangottarun/GPXOverlay
+
+
+COPY ./rotate.sh /rotate
