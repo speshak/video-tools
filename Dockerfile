@@ -3,6 +3,7 @@ FROM python:3-buster
 RUN apt-get update && \
     apt-get install -y \
         ffmpeg \
+        fonts-liberation \
         gpsbabel \
         imagemagick \
         jq \
@@ -14,8 +15,10 @@ RUN apt-get update && \
     rm -f "$TEMP_DEB" && \
     rm -rf /var/lib/apt/lists/* && \
     pip install git+https://github.com/juanmcasillas/gopro2gpx && \
-    pip install yq && \
     pip install git+https://github.com/Seangottarun/GPXOverlay
 
+RUN wget https://github.com/mikefarah/yq/releases/download/v4.13.3/yq_linux_amd64 -O /usr/bin/yq &&\
+    chmod +x /usr/bin/yq
 
 COPY ./rotate.sh /rotate
+COPY ./titlecards.sh /titlecards
